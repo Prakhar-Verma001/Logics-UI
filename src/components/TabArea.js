@@ -27,7 +27,7 @@ const TabArea = () => {
     }
 
   return (
-    <Box>
+    <Box mx={{lg:0, xs:1}}>
         <Stack direction={'row'} justifyContent={{md:'right', xs:'center'}} mb={1}>
             <Tabs value={value} onChange={handleTabs}>
                 <Tab label='Tab 1' />
@@ -35,9 +35,8 @@ const TabArea = () => {
                 <Tab label='Tab 3' />
             </Tabs>
         </Stack>
-        <Stack direction={{lg:'row', xs:'column'}} spacing={{lg:2, xs:1}} alignItems={'center'} 
-        justifyContent={'space-between'} sx={{border: '1px solid black', borderRadius:2, px:4, 
-        py:{lg:1, xs:2}, mx:1}}>
+        <Stack direction={{lg:'row', xs:'column'}} spacing={1} alignItems={'center'} p={1}
+        justifyContent={'space-between'} sx={{border: '1px solid black', borderRadius:2}}>
                 <WeatherItems src={Cal} texts='10 : 27 AM Saturday, October 21, 2023' />
                 <WeatherItems src={Cloud} texts='Current Weather' />
                 <WeatherItems src={Temp} texts='Todays AVG PR : 21 Oct 2023' />
@@ -55,7 +54,7 @@ const TabPanels = (props) => {
   return (
     <>
     {
-        props.value === props.index && (<Box p={1}>{props.children}</Box>)
+        props.value === props.index && (<Box py={1}>{props.children}</Box>)
     }
     </>
   )
@@ -64,25 +63,25 @@ const TabPanels = (props) => {
 const WeatherChart = () => {
   return (
     <>
-        <Stack direction={'column'} spacing={3} mb={4}>
+        <Stack direction={'column'} spacing={2} mb={2}>
 
             
 
             <Grid container height={'100%'} rowGap={2}>
                 <Grid item lg={4} xs={12}>
-                    <Card sx={{display:'flex', alignItems:'center', justifyContent:'center', height:'100%' ,boxSizing:'border-box', boxShadow:3, m:{lg:0, xs:1}}}>
+                    <Card sx={{p:1, display:'flex', alignItems:'center', justifyContent:'center', height:'100%' ,boxSizing:'border-box', boxShadow:3}}>
                         <img src={ArchT} alt='Architecture' />
                     </Card>
                 </Grid>
                 <Grid item lg={8} xs={12}>
-                    <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', mx:1}}>
+                    <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', ml:{lg:1, xs:0}}}>
                         <Card sx={{boxShadow:3}}>
                             <CapacityStack />
                         </Card>
-                        <Card sx={{boxShadow:3}}>
-                            <Stack direction={{md:'row', xs:'column'}} spacing={{md:4, xs:2}} p={2} justifyContent={'space-between'} alignItems={{md:'center', xs:'start'}} sx={{width:'100%', boxSizing:'border-box'}}>
+                        <Card sx={{boxShadow:3, flexGrow:1}}>
+                            <Stack direction={{md:'row', xs:'column'}} p={1.5} spacing={2} py={2} justifyContent={'space-evenly'} alignItems={'center'} sx={{width:'100%', boxSizing:'border-box'}}>
                                 <img src={Graph} alt='Graph' width={'100%'}/>
-                                <img src={Indi} alt='Indicater'/>
+                                <img src={Indi} width={'20%'} alt='Indicater'/>
                             </Stack>
                         </Card>
                     </Stack>
@@ -91,29 +90,29 @@ const WeatherChart = () => {
 
             <Grid container height={'100%'} rowGap={2}>
                 <Grid item lg={4} xs={12}>
-                    <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box',  mx:{lg:0, xs:1}}}>
+                    <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>
 
-                            <Card sx={{boxShadow:3, boxSizing:'border-box'}}>
-                                <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} pl={2}>
-                                    <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700'}}>Inverter Wise Capacity [KWp]</Typography>
+                            <Card sx={{boxShadow:3, boxSizing:'border-box', py:'2px'}}>
+                                <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
+                                    <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700', p:1}}>Inverter Wise Capacity [KWp]</Typography>
                                     <Stack direction={'row'} alignItems={'center'} spacing={'4px'}>
                                         <IconButton><img src={Scan} alt='Scanner'/></IconButton>
-                                        <IconButton><img src={SET} alt='Setting'/></IconButton>
+                                        <IconButton sx={{p:0}}><img src={SET} alt='Setting'/></IconButton>
                                     </Stack>
                                 </Stack>
                             </Card>
 
-                            <Card sx={{boxShadow:3, height:'85%', boxSizing:'border-box', p:2}}>
-                                <Stack direction={'column'} alignItems={'center'} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>    
-                                    <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700', py:2}}>Capacity [KWp]</Typography>
-                                    <img src={RainBow} alt='RainBow'/>    
+                            <Card sx={{boxShadow:3, height:'85%', boxSizing:'border-box', p:2, flexGrow:1}}>
+                                <Stack direction={'column'} spacing={2} width={1} alignItems={'center'} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>    
+                                    <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700'}}>Capacity [KWp]</Typography>
+                                    <img src={RainBow} alt='RainBow' width={'100%'}/>    
                                 </Stack>
                             </Card>
                     </Stack>
                 </Grid>
 
                 <Grid item lg={8} xs={12}>
-                    <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', mx:1}}>
+                    <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', ml:{lg:1, xs:0}}}>
                         <Card sx={{boxShadow:3}}>
                             <CapacityStack />
                         </Card>
@@ -131,8 +130,8 @@ const WeatherChart = () => {
 const CapacityStack = () => {
     return (
         <>
-            <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} pl={2}>
-                <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700'}}>Inverter Wise Capacity [KWp]</Typography>
+            <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} py={'2px'}>
+                <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700', p:1}}>Inverter Wise Capacity [KWp]</Typography>
                 
                 <Stack direction={'row'} alignItems={'center'} spacing={'10px'} display={{md:'flex', xs:'none'}}>
                     <IconButton><img src={CalB} alt='Calander Icon' /></IconButton>
@@ -148,7 +147,7 @@ const CapacityStack = () => {
                 
                 <Stack direction={'row'} alignItems={'center'} spacing={'4px'}>
                     <IconButton><img src={Scan} alt='Scanner'/></IconButton>
-                    <IconButton><img src={SET} alt='Setting'/></IconButton>
+                    <IconButton sx={{p:0}}><img src={SET} alt='Setting'/></IconButton>
                 </Stack>
             </Stack>
         </>
@@ -158,36 +157,39 @@ const CapacityStack = () => {
 const WeatherItems = (props) => {
     return (
       <>
-        <Button>
-            <Stack direction={'row'} spacing={1} alignItems={'center'}>
+        <Button sx={{p:0.5}}>
+            <Stack direction={'row'} spacing={0.6} alignItems={'center'}>
                 <img src={props.src} alt='Icons'/>
-                <Typography variant='subtitle1' color={'black'} sx={{fontSize:'0.8rem', fontWeight:'600'}}>{props.texts}</Typography>
+                <Typography variant='subtitle1' lineHeight={1.4} textAlign={'left'} 
+                color={'black'} sx={{fontSize:'0.8rem', fontWeight:'600'}} textTransform={'none'}>    
+                    {props.texts}
+                </Typography>
             </Stack>
         </Button>
       </>
     )
-  }
+}
 
 const EnergyGraph = () => {
   return (
     <>
-        <Stack direction={'column'} spacing={3} mb={4}>
+        <Stack direction={'column'} spacing={2} mb={2}>
 
             <Grid container height={'100%'} rowGap={2}>
                     <Grid item lg={4} xs={12}>
-                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box',  mx:{lg:0, xs:1}}}>
+                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>
 
-                                <Card sx={{boxShadow:3, boxSizing:'border-box'}}>
-                                    <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} pl={2}>
-                                        <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700'}}>Inverter Wise Capacity [KWp]</Typography>
+                                <Card sx={{boxShadow:3, boxSizing:'border-box', py:'2px'}}>
+                                    <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
+                                        <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700', p:1}}>Inverter Wise Capacity [KWp]</Typography>
                                         <Stack direction={'row'} alignItems={'center'} spacing={'2px'}>
                                             <IconButton><img src={Scan} alt='Scanner'/></IconButton>
-                                            <IconButton><img src={SET} alt='Setting'/></IconButton>
+                                            <IconButton sx={{p:0}}><img src={SET} alt='Setting'/></IconButton>
                                         </Stack>
                                     </Stack>
                                 </Card>
 
-                                <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box', p:0}}>
+                                <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box', p:1, flexGrow:1}}>
                                     <Stack direction={'column'} alignItems={'center'} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>    
                                         <img src={BarGraph} alt='BarGraph' height={'100%'} width={'100%'}/>    
                                     </Stack>
@@ -196,11 +198,11 @@ const EnergyGraph = () => {
                     </Grid>
 
                     <Grid item lg={8} xs={12}>
-                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', mx:1}}>
+                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', ml:{lg:1, xs:0}}}>
                             <Card sx={{boxShadow:3}}>
                                 <CapacityStack />
                             </Card>
-                            <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box'}}>
+                            <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box', flexGrow:1, p:1}}>
                                 <Stack direction={'column'} alignItems={'center'} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>    
                                     <img src={Green} alt='GreenGraph' height={'100%'} width={'100%'}/>    
                                 </Stack>
@@ -209,18 +211,18 @@ const EnergyGraph = () => {
                     </Grid>
                 </Grid>
 
-            <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box',  mx:{lg:0, xs:1}}}>
-                <Card sx={{boxShadow:3, boxSizing:'border-box'}}>
-                    <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} pl={2}>
-                        <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700'}}>Inverter Wise Capacity [KWp]</Typography>
-                        <Stack direction={'row'} alignItems={'center'} spacing={'2px'}>
-                            <IconButton><img src={Scan} alt='Scanner'/></IconButton>
-                            <IconButton><img src={SET} alt='Setting'/></IconButton>
-                        </Stack>
+            <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>
+            <Card sx={{boxShadow:3, boxSizing:'border-box', py:'2px'}}>
+                <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
+                    <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700', p:1}}>Inverter Wise Capacity [KWp]</Typography>
+                    <Stack direction={'row'} alignItems={'center'} spacing={'2px'}>
+                        <IconButton><img src={Scan} alt='Scanner'/></IconButton>
+                        <IconButton sx={{p:0}}><img src={SET} alt='Setting'/></IconButton>
                     </Stack>
-                </Card>
+                </Stack>
+            </Card>
 
-                <Card sx={{boxShadow:3, boxSizing:'border-box', p:0}}>
+                <Card sx={{boxShadow:3, boxSizing:'border-box', p:1, flexGrow:1}}>
                     <Stack direction={'column'} alignItems={'center'} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>    
                         <img src={BigGreen} alt='BigGreenGraph' height={'100%'} width={'100%'}/>    
                     </Stack>
@@ -235,7 +237,7 @@ const EnergyGraph = () => {
 const EnergyDetails = () => {
     return (
         <>
-            <Stack direction={'column'} spacing={3} mb={4}>
+            <Stack direction={'column'} spacing={2} mb={2}>
             
                 <Grid container height={'100%'} rowGap={2}>
                     <Grid item md={4} xs={12} px={'4px'}>
@@ -280,19 +282,19 @@ const EnergyDetails = () => {
                 
                 <Grid container height={'100%'} rowGap={2}>
                     <Grid item lg={4} xs={12}>
-                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box',  mx:{lg:0, xs:1}}}>
+                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>
 
-                                <Card sx={{boxShadow:3, boxSizing:'border-box'}}>
-                                    <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'} pl={2}>
-                                        <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700'}}>Inverter Wise Capacity [KWp]</Typography>
+                                <Card sx={{boxShadow:3, boxSizing:'border-box', py:'2px'}}>
+                                    <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'}>
+                                        <Typography variant='subtitle2' sx={{fontSize:'1rem', fontWeight:'700', p:1}}>Inverter Wise Capacity [KWp]</Typography>
                                         <Stack direction={'row'} alignItems={'center'} spacing={'2px'}>
                                             <IconButton><img src={Scan} alt='Scanner'/></IconButton>
-                                            <IconButton><img src={SET} alt='Setting'/></IconButton>
+                                            <IconButton sx={{p:0}}><img src={SET} alt='Setting'/></IconButton>
                                         </Stack>
                                     </Stack>
                                 </Card>
 
-                                <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box', p:0}}>
+                                <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box', p:1, flexGrow:1}}>
                                     <Stack direction={'column'} alignItems={'center'} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>    
                                         <img src={BarGraph} alt='BarGraph' height={'100%'} width={'100%'}/>    
                                     </Stack>
@@ -301,11 +303,11 @@ const EnergyDetails = () => {
                     </Grid>
 
                     <Grid item lg={8} xs={12}>
-                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', mx:1}}>
+                        <Stack direction={'column'} spacing={1} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box', ml:{lg:1, xs:0}}}>
                             <Card sx={{boxShadow:3}}>
                                 <CapacityStack />
                             </Card>
-                            <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box'}}>
+                            <Card sx={{boxShadow:3, height:'88%', boxSizing:'border-box', flexGrow:1, p:1}}>
                                 <Stack direction={'column'} alignItems={'center'} justifyContent={'space-between'} sx={{height:'100%', boxSizing:'border-box'}}>    
                                     <img src={Green} alt='GreenGraph' height={'100%'} width={'100%'}/>    
                                 </Stack>
