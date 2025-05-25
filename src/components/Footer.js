@@ -8,7 +8,7 @@ const Footer = () => {
           component="footer"
           elevation={3}
           square
-          sx={{ mt: 'auto', py: 4, px: 2, bgcolor: 'grey.100' }}
+          sx={{ mt: 'auto', py: 2, px: 2, bgcolor: 'grey.100' }}
         >
           <Divider sx={{ mb: 2 }} />
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="space-between" alignItems="center" marginInline={'2rem'}>
